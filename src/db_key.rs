@@ -45,8 +45,7 @@ impl DbKey for DbKey2i32 {
 
     /// We implement this manually (without rkyv) so we have control over the [`Ord`] as interpreted by [`sled`].
     ///
-    /// 13 bytes total per key, 1 for LOD and 12 for the morton code. Although a [`Morton2i32`] uses a u128, it only actually
-    /// uses the least significant 96 bits (12 bytes).
+    /// 9 bytes total per key, 1 for LOD and 8 for the morton code.
     fn as_sled_key(&self) -> Self::SledKey {
         let mut bytes = [0; 9];
         bytes[0] = self.level;
