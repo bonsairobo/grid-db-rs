@@ -11,7 +11,6 @@ pub trait DbKey:
     Archive + Clone + Debug + Eq + Hash + Ord + Sized + Serialize<NoSharedAllocSerializer<8192>>
 {
     type Coords;
-    type OrdKey: Ord;
     type SledKey: AsRef<[u8]>;
 
     fn as_sled_key(&self) -> Self::SledKey;
@@ -40,7 +39,6 @@ impl DbKey2i32 {
 
 impl DbKey for DbKey2i32 {
     type Coords = IVec2;
-    type OrdKey = Morton2i32;
     type SledKey = [u8; 9];
 
     /// We implement this manually (without rkyv) so we have control over the [`Ord`] as interpreted by [`sled`].
@@ -93,7 +91,6 @@ impl DbKey3i32 {
 
 impl DbKey for DbKey3i32 {
     type Coords = IVec3;
-    type OrdKey = Morton3i32;
     type SledKey = [u8; 13];
 
     /// We implement this manually (without rkyv) so we have control over the [`Ord`] as interpreted by [`sled`].
