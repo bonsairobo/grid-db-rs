@@ -1,0 +1,22 @@
+[package]
+name = "grid-db"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+ahash = "0.7"
+ilattice = { git = "https://github.com/bonsairobo/ilattice-rs", features = ["morton-encoding", "rkyv"] }
+itertools = "0.10"
+log = "0.4"
+lz4_flex = "0.9"
+ndshape = { git = "https://github.com/bonsairobo/ndshape-rs", rev = "d184932c" }
+rkyv = { version = "0.7", features = ["validation"] }
+# NB: need 8-byte alignment guarantee from sled on main branch; not in stable release yet
+sled = { git = "https://github.com/spacejam/sled", rev = "c840fe7e" }
+vox-format = "0.1"
+
+futures-lite = { version = "1.12", optional = true }
+
+[dev-dependencies]
+crossbeam = "0.8"
