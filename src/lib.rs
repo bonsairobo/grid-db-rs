@@ -32,6 +32,7 @@ pub use sled;
 /// Level of detail.
 pub type Level = u8;
 
+/// Identifier of a particular archived [`VersionChanges`].
 #[derive(
     Archive, Clone, Copy, Debug, Default, Deserialize, Eq, PartialEq, PartialOrd, Ord, Serialize,
 )]
